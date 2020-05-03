@@ -1,7 +1,7 @@
 # 使用 darkflow 訓練自己的 YOLO
-[YOLO 官網](https://pjreddie.com/darknet/yolo/)
-[darkflow](https://github.com/thtrieu/darkflow)
-[darknet](https://github.com/pjreddie/darknet)
+[YOLO 官網](https://pjreddie.com/darknet/yolo/)  
+[darkflow](https://github.com/thtrieu/darkflow)  
+[darknet](https://github.com/pjreddie/darknet)  
 
 ## 下載 darkflow
 到 darkflow GitHub 下載或 clone
@@ -20,7 +20,7 @@
 5. 將檔最後一層 [region] 的 classes 改為預測種類的數量，例如我只要預測狗這個種類就將 classes 改為 1
 6. 修改 anchors，可利用[kmeans](https://github.com/lars76/kmeans-anchor-boxes)計算自己 data 的 anchors
 7. 修改最後一層 [convolutional] 的 filters，YOLO v2 的計算公式為 (classes+5)\*5，YOLO v3 的計算公式為 (classes+5)\*3，例如我用 YOLO v2 預測一個種類就改為 (1+5)\*5=30$
-<font bgcolor="red">
+<font color="red">
 原始的 cfg 檔必須要保留下來，之後用 weights 檔訓練時會比較原始的 cfg 檔及新的 cfg 檔
 </font>
 
@@ -52,10 +52,10 @@
   ```python ./flow --load [checkpoint] --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```
   :::
 ## 測試
-```python ./flow --load -1 --model cfg/yolov2_test.cfg```
-測試結果會在 darkflow-master/sample_img/out
-若要觀察 bounding box 的位置可輸出 json 檔來查看
-```python ./flow --load -1 --model cfg/yolov2_test.cfg --json```
+```python ./flow --load -1 --model cfg/yolov2_test.cfg```  
+測試結果會在 darkflow-master/sample_img/out  
+若要觀察 bounding box 的位置可輸出 json 檔來查看  
+```python ./flow --load -1 --model cfg/yolov2_test.cfg --json```  
 
 ## 可能遇到的錯誤
 #### ```AssertionError: expect 202314760 bytes, found 203934260```
