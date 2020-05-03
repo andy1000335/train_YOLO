@@ -49,6 +49,12 @@
 - 從任意檢查點開始訓練模型  
   ```python ./flow --load [checkpoint] --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```
 
+## 將模型存為 pb 檔
+```python ./flow  --load -1 --model cfg/yolov2_test.cfg --savepb```  
+
+使用 pb 檔預測  
+```python ./flow --pbLoad built_graph/yolov2_test.pb --metaLoad built_graph/yolov2_test.meta```  
+
 ## 測試
 ```python ./flow --load -1 --model cfg/yolov2_test.cfg```  
 測試結果會在 darkflow-master/sample_img/out  
