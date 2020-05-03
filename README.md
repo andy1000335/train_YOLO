@@ -27,9 +27,9 @@
 修改 darkflow-master/labels.txt，將內容改為預測種類的 label，一行寫一個類別
 
 ## 開始訓練
-1. 開啟 cmd 進入 darkflow-master
+1. 開啟 cmd 進入 darkflow-master  
   ```cd ./darkflow-master```
-2. 設定
+2. 設定  
   ```python setup.py build_ext --inplace```
 3. 訓練
   - 使用 weights 檔訓練  
