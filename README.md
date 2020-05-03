@@ -33,9 +33,9 @@
   ```python setup.py build_ext --inplace```
 3. 訓練  
   (1) 使用 weights 檔訓練  
-  &nbsp;&nbsp;```python ./flow --load bin/yolov2.weights --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```  
+  &nbsp;&nbsp;&nbsp;&nbsp;```python ./flow --load bin/yolov2.weights --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```  
   (2) 不使用 weights 檔訓練  
-  &nbsp;&nbsp;```python ./flow --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```  
+  &nbsp;&nbsp;&nbsp;&nbsp;```python ./flow --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```  
 
 - 常用參數
   - ```--gpu 0.7```：設定 gpu 使用率為 0.7
