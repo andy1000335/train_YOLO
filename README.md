@@ -19,7 +19,7 @@
 4. 開啟複製的 cfg 檔
 5. 將檔最後一層 [region] 的 classes 改為預測種類的數量，例如我只要預測狗這個種類就將 classes 改為 1
 6. 修改 anchors，可利用[kmeans](https://github.com/lars76/kmeans-anchor-boxes)計算自己 data 的 anchors
-7. 修改最後一層 [convolutional] 的 filters，YOLO v2 的計算公式為 (classes+5)\*5，YOLO v3 的計算公式為 (classes+5)\*3，例如我用 YOLO v2 預測一個種類就改為 (1+5)\*5=30$
+7. 修改最後一層 [convolutional] 的 filters，YOLO v2 的計算公式為 (classes+5)\*5，YOLO v3 的計算公式為 (classes+5)\*3，例如我用 YOLO v2 預測一個種類就改為 (1+5)\*5=30
 
 原始的 cfg 檔必須要保留下來，之後用 weights 檔訓練時會比較原始的 cfg 檔及新的 cfg 檔  
 
@@ -32,9 +32,9 @@
 2. 設定
   ```python setup.py build_ext --inplace```
 3. 訓練
-  - 使用 weights 檔訓練
+  - 使用 weights 檔訓練  
     ```python ./flow --load bin/yolov2.weights --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```
-  - 不使用 weights 檔訓練
+  - 不使用 weights 檔訓練  
     ```python ./flow --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```
 
 - 常用參數
@@ -44,14 +44,15 @@
   - ```--lr 1e-3```：設定 learning rate 為 0.001
   - 其他參數可參閱 darkflow-master/darkflow/default.py
 
-- 繼續訓練模型
+- 繼續訓練模型  
   ```python ./flow --load -1 --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```
-- 從任意檢查點開始訓練模型
+- 從任意檢查點開始訓練模型  
   ```python ./flow --load [checkpoint] --model cfg/yolov2_test.cfg --train --annotation train/annotation --dataset train/image```
 
 ## 測試
 ```python ./flow --load -1 --model cfg/yolov2_test.cfg```  
 測試結果會在 darkflow-master/sample_img/out  
+
 若要觀察 bounding box 的位置可輸出 json 檔來查看  
 ```python ./flow --load -1 --model cfg/yolov2_test.cfg --json```  
 
