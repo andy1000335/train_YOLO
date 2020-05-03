@@ -19,10 +19,10 @@
 4. 開啟複製的 cfg 檔
 5. 將檔最後一層 [region] 的 classes 改為預測種類的數量，例如我只要預測狗這個種類就將 classes 改為 1
 6. 修改 anchors，可利用[kmeans](https://github.com/lars76/kmeans-anchor-boxes)計算自己 data 的 anchors
-7. 修改最後一層 [convolutional] 的 filters，YOLO v2 的計算公式為 $(classes+5) \times 5$，YOLO v3 的計算公式為 $(classes+5) \times 3$，例如我用 YOLO v2 預測一個種類就改為 $(1+5) \times 5=30$
-:::danger
+7. 修改最後一層 [convolutional] 的 filters，YOLO v2 的計算公式為 (classes+5)\*5，YOLO v3 的計算公式為 (classes+5)\*3，例如我用 YOLO v2 預測一個種類就改為 (1+5)\*5=30$
+<font bgcolor="red">
 原始的 cfg 檔必須要保留下來，之後用 weights 檔訓練時會比較原始的 cfg 檔及新的 cfg 檔
-:::
+</font>
 
 ## 修改 label
 修改 darkflow-master/labels.txt，將內容改為預測種類的 label，一行寫一個類別
@@ -58,15 +58,15 @@
 ```python ./flow --load -1 --model cfg/yolov2_test.cfg --json```
 
 ## 可能遇到的錯誤
-### ```AssertionError: expect 202314760 bytes, found 203934260```
+#### ```AssertionError: expect 202314760 bytes, found 203934260```
 - 檢查是否有保留原 cfg 檔
-### ```sre_constants.error: bad character range k-a at position 364```
+#### ```sre_constants.error: bad character range k-a at position 364```
 - 可能是 train/image 內又分不同目錄，圖片必須全都放在 train/image 內
-### ```ZeroDivisionError: division by zero```
+#### ```ZeroDivisionError: division by zero```
 - annotation 必須為 .xml
-### ```AttributeError: 'NoneType' object has no attribute 'shape'```
+#### ```AttributeError: 'NoneType' object has no attribute 'shape'```
 - 圖片路徑錯誤
 - 檢查註解(xml檔)內的 <filename> 圖片名稱是否有副檔名(.jpg)
-### 測試後沒有輸出(沒有bounding box)
+#### 測試後沒有輸出(沒有bounding box)
 - 可能是訓練次數不夠，多跑幾個 epoch
 - 可嘗試一次訓練一小批資料(第一次使用3~5筆)，擬和後加入另一小批資料(數量通常為原資料的一半)再訓練
